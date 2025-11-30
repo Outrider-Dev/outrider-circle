@@ -1,28 +1,62 @@
 :root{
-  --bg:#0b0b0b; --panel:#0f0f0f; --muted:#bdbdbd; --gold:#c7a355;
+  --bg:#090909; --panel:#0f0f0f; --muted:#bfbfbf; --gold:#c7a355; --gold-dark:#b58e2d;
 }
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#eaeaea}
-#app{display:grid;grid-template-columns:260px 1fr 240px;gap:12px;height:100vh;padding:12px}
-.sidebar{background:linear-gradient(180deg,#0f0f0f,#0d0d0d);border-radius:10px;padding:14px;display:flex;flex-direction:column}
-.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:var(--bg);color:#eaeaea}
+.hidden{display:none}
+
+/* SPLASH */
+.splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent);z-index:50}
+.splash-inner{text-align:center;animation:fadeIn 900ms ease}
+.splash-logo{width:220px;height:auto;mix-blend-mode:normal;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.6));transform-origin:center;animation:logoPulse 2000ms infinite}
+.splash-title{font-weight:900;color:var(--gold);font-size:22px;letter-spacing:2px;margin-top:12px}
+.splash-sub{color:var(--muted);margin-top:8px}
+.splash-spinner{margin-top:18px;height:6px;width:80px;border-radius:50px;background:linear-gradient(90deg,var(--gold),var(--gold-dark));opacity:0.95;box-shadow:0 4px 16px rgba(199,163,85,0.12)}
+
+/* LAYOUT */
+#app{display:grid;grid-template-columns:260px 1fr 280px;gap:12px;height:100vh;padding:14px}
+.sidebar{background:linear-gradient(180deg,#0f0f0f,#0d0d0d);border-radius:12px;padding:12px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .brand img{width:56px;height:56px;border-radius:8px;object-fit:contain}
 .brand-name{font-weight:800;color:var(--gold);letter-spacing:1px}
-.channels h4{margin:6px 0;color:var(--muted);font-size:13px}
-.channels ul{list-style:none;padding:0;margin:0;overflow:auto}
-.channels li{padding:8px;border-radius:6px;margin-bottom:6px;cursor:pointer;background:transparent;color:#ddd}
-.channels li.active{background:rgba(199,163,85,0.12);color:var(--gold)}
-.join{margin-top:auto}
-.join input{width:100%;padding:8px;border-radius:6px;border:1px solid #222;background:transparent;color:#eaeaea}
-.join button{width:100%;margin-top:8px;padding:10px;border-radius:6px;border:none;background:var(--gold);color:#000;font-weight:700}
-.main{display:flex;flex-direction:column;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:10px;padding:12px;min-width:0}
-.chat-header{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:700}
-.messages{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
-.message{padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);max-width:72%}
-.message .meta{font-size:12px;color:var(--muted);margin-bottom:6px}
+.channels h4{margin:6px 0;color:var(--muted);font-size:12px}
+.channel-list{list-style:none;padding:0;margin:0;flex:1;overflow:auto}
+.channel-list li{padding:10px;border-radius:8px;margin-bottom:6px;cursor:pointer;color:#ddd;background:transparent}
+.channel-list li.active{background:rgba(199,163,85,0.06);color:var(--gold);box-shadow:inset 0 0 12px rgba(0,0,0,0.5)}
+.account-area{margin-top:12px}
+
+.btn{padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+.btn-outline{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+.btn-gold{background:linear-gradient(90deg,var(--gold),var(--gold-dark));color:#060606;font-weight:700;border:none;box-shadow:0 6px 18px rgba(183,143,39,0.08)}
+
+.main{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:12px;padding:12px;min-width:0}
+.chat-header{padding:8px;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:800;color:var(--gold);font-size:18px}
+.messages{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:12px}
+.message{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);max-width:72%}
+.message .meta{font-size:12px;color:var(--muted);margin-bottom:8px}
 .composer{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,0.03)}
-.composer input{flex:1;padding:10px;border-radius:8px;border:1px solid #222;background:transparent;color:#eaeaea}
-.composer button{padding:10px 16px;border-radius:8px;border:none;background:var(--gold);color:#000;font-weight:700}
-.rightbar{background:linear-gradient(180deg,#0f0f0f,#0d0d0d);border-radius:10px;padding:12px}
-.rightbar h4{color:var(--muted);margin-bottom:8px}
-@media(max-width:900px){#app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.rightbar{display:none}}
+.composer input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#eaeaea}
+
+.rightbar{background:linear-gradient(180deg,#0f0f0f,#0d0d0d);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:12px}
+.right-section h4{color:var(--muted);margin:0 0 8px 0}
+.right-section ul{list-style:none;padding:0;margin:0;max-height:220px;overflow:auto}
+.right-section li{background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;margin-bottom:6px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent);display:flex;align-items:center;justify-content:center;z-index:80}
+.modal{width:560px;max-width:92%;background:#0b0b0b;border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+.modal-close{position:absolute;right:18px;top:16px;background:transparent;border:none;color:var(--muted);font-size:22px}
+.modal input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;margin-top:8px}
+.or{text-align:center;color:var(--muted);margin-top:10px}
+.admin-block{margin-top:12px}
+.small{font-size:12px}
+
+/* small screens */
+@media (max-width:920px){
+  #app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}
+  .rightbar{display:none}
+}
+
+/* animations */
+@keyframes logoPulse{0%{transform:scale(0.98)}50%{transform:scale(1)}100%{transform:scale(0.98)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
