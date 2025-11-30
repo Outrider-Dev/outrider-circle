@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Outrider Circle</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="logo.png" alt="logo">
+        <div class="brand-name">THE OUTRIDER CIRCLE</div>
+      </div>
+      <div class="channels">
+        <h4>Channels</h4>
+        <ul id="channelList"></ul>
+      </div>
+      <div class="join">
+        <input id="username" placeholder="Display name">
+        <button id="joinBtn">Enter</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="chat-header">
+        <div id="currentChannel">#general</div>
+      </div>
+      <div id="messages" class="messages"></div>
+      <div class="composer">
+        <input id="msgInput" placeholder="Message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </main>
+
+    <aside class="rightbar">
+      <h4>Online</h4>
+      <ul id="presenceList"></ul>
+    </aside>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>

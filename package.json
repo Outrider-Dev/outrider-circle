@@ -1,0 +1,33 @@
+{
+  "name": "outrider-circle-app",
+  "version": "1.0.0",
+  "description": "Outrider Circle \u2014 local Discord-style app (dark theme)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64 --publish never"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "electron-builder": "^23.6.0",
+    "electron": "^28.4.3"
+  },
+  "build": {
+    "appId": "com.outrider.circle",
+    "productName": "Outrider Circle",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "logo.ico"
+    }
+  }
+}
