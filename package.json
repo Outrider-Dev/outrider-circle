@@ -12,7 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "electron-builder": "^23.6.0",
-    "electron": "^28.4.3"
+    "electron": "^30.0.0"
   },
   "build": {
     "appId": "com.outrider.circle",
